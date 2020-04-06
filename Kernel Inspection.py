@@ -88,12 +88,6 @@ if not os.path.exists(org_img_loc):    #先確認資料夾是否存在
 
 # Create a connection between the input and the target layer
 submodel = tf.keras.models.Model([model.inputs[0]], [model.get_layer(layer_name).output])
-# Initiate random noise
-input_img_data = np.random.random((1, 224, 224, 3))
-input_img_data = (input_img_data - 0.5) * 20 + 128.
-
-# Cast random noise from np.float64 to tf.float32 Variable
-input_img_data = tf.Variable(tf.cast(input_img_data, tf.float32))
 
 for i in range(first_filter_index, end_filter_index):
     # Initiate random noise
